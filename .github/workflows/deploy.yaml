@@ -1,0 +1,68 @@
+name: Deploy SAM Application
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install AWS CLI via pip
+        run: |
+          python -m pip install --upgrade pip
+          pip install awscli
+          aws --version
+
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Deploy to AWS
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          echo "Token length: ${#TELEGRAM_BOT_TOKEN}"
+
+      - name: Install AWS SAM CLI with compatible Werkzeug version
+        run: |
+          python -m pip install --upgrade pip
+          pip install "werkzeug<3.0.0"
+          pip install aws-sam-cli
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build SAM Application
+        run: sam build
+
+      - name: Deploy AWS SAM Application
+        run: |
+          echo "Token length: ${#TELEGRAM_BOT_TOKEN}"
+          sam deploy --no-confirm-changeset --stack-name pill-sync-bot-stack \
+            --capabilities CAPABILITY_IAM --region $AWS_DEFAULT_REGION \
+            --resolve-s3 --force-upload \
+            --parameter-overrides ParameterKey=TELEGRAMBOTTOKEN,ParameterValue="$TELEGRAM_BOT_TOKEN" \
+            ParameterKey=ALLOWEDUSERNAMES,ParameterValue="$ALLOWED_USERNAMES"
+        env:
+          AWS_DEFAULT_REGION: us-east-1
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ALLOWED_USERNAMES: ${{ secrets.ALLOWED_USERNAMES }}

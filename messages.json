@@ -1,0 +1,74 @@
+{
+    "start": {
+        "ru": "Привет! Я PillSyncBot.\n\nДоступные команды:\n/start - Начало работы с ботом и вывод списка команд\n/addmedicine <название> <дозировка> <время1> [<время2> ...] - Добавить лекарство\n/deletemedicine <название> - Удалить лекарство\n/settimezone <таймзона> - Установить таймзону (например, Europe/Moscow)\n/listmedicines - Вывести список добавленных лекарств\n/setlanguage <язык> - Выбрать язык (ru, en)\n\nТакже бот будет отправлять напоминания с кнопкой 'Принял', чтобы вы могли подтвердить прием лекарства.",
+        "en": "Hello! I'm PillSyncBot.\n\nAvailable commands:\n/start - Start working with the bot and list commands\n/addmedicine <name> <dosage> <time1> [<time2> ...] - Add medicine\n/deletemedicine <name> - Delete medicine\n/settimezone <timezone> - Set timezone (e.g., Europe/Moscow)\n/listmedicines - List added medicines\n/setlanguage <language> - Set language (ru, en)\n\nThe bot will also send reminders with a 'Taken' button to confirm that you've taken your medicine."
+    },
+    "addmedicine_usage": {
+        "ru": "Использование: /addmedicine <название> <дозировка> <время1> [<время2> ...]",
+        "en": "Usage: /addmedicine <name> <dosage> <time1> [<time2> ...]"
+    },
+    "medicine_added": {
+        "ru": "Лекарство '{medicine}' добавлено с дозировкой {dosage} на {times}.",
+        "en": "Medicine '{medicine}' added with dosage {dosage} at {times}."
+    },
+    "deletemedicine_usage": {
+        "ru": "Использование: /deletemedicine <название>",
+        "en": "Usage: /deletemedicine <name>"
+    },
+    "medicine_not_found": {
+        "ru": "Лекарство '{medicine}' не найдено.",
+        "en": "Medicine '{medicine}' not found."
+    },
+    "medicine_deleted": {
+        "ru": "Лекарство '{medicine}' удалено.",
+        "en": "Medicine '{medicine}' deleted."
+    },
+    "settimezone_usage": {
+        "ru": "Использование: /settimezone <таймзона>\nПример: /settimezone Europe/Moscow",
+        "en": "Usage: /settimezone <timezone>\nExample: /settimezone Europe/Moscow"
+    },
+    "timezone_set": {
+        "ru": "Твоя таймзона установлена как: {timezone}",
+        "en": "Your timezone is set to: {timezone}"
+    },
+    "listmedicines_empty": {
+        "ru": "У вас нет добавленных лекарств.",
+        "en": "You have no added medicines."
+    },
+    "echo": {
+        "ru": "Ты сказал: {text}",
+        "en": "You said: {text}"
+    },
+    "reminder_message": {
+        "ru": "Напоминание: {medicine} ({dosage}) на {time}\nНажмите 'Принял', если приняли лекарство.",
+        "en": "Reminder: {medicine} ({dosage}) at {time}\nPress 'Taken' if you have taken your medicine."
+    },
+    "acknowledged_success": {
+        "ru": "Прием подтвержден.",
+        "en": "Intake confirmed."
+    },
+    "ack_invalid": {
+        "ru": "Неверные данные подтверждения.",
+        "en": "Invalid confirmation data."
+    },
+    "medicine_for_ack_not_found": {
+        "ru": "Не удалось найти лекарство для подтверждения.",
+        "en": "Medicine for confirmation not found."
+    },
+    "setlanguage_usage": {
+        "ru": "Использование: /setlanguage <язык>\nДоступные языки: ru, en",
+        "en": "Usage: /setlanguage <language>\nAvailable languages: ru, en"
+    },
+    "language_set": {
+        "ru": "Язык установлен на русский.",
+        "en": "Language set to English."
+    },
+    "ack_button": {
+        "ru": "Принял",
+        "en": "Taken"
+    },
+    "medicine_time_preposition": {
+        "ru": "на",
+        "en": "at"
+    }
+}
