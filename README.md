@@ -9,5 +9,5 @@ PillSyncBot is a private Telegram bot designed to help users manage their medica
 - Receive automatic reminders at the specified times
 - Confirm medication intake using an inline button
 - Set a custom timezone for accurate reminders
-- Multi-language support (English 🇬🇧 & Russian 🇷🇺)
+- Multi-language support (English & Russian)
 - Secure access with allowed user restrictions
